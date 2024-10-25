@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float speed;
-    [SerializeField] private float radius;
-    private Vector3 initialPosition;
-    private int rotationDirection;
-    private float timeCounter;
+    [SerializeField] private float _speed;
+    [SerializeField] private float _radius;
+    private Vector3 _initialPosition;
+    private int _rotationDirection;
+    private float _timeCounter;
 
     private void Start()
     {
-        initialPosition = transform.position;
-        rotationDirection = 1;
+        _initialPosition = transform.position;
+        _rotationDirection = 1;
     }
 
     private void Update()
@@ -26,18 +26,18 @@ public class PlayerMovement : MonoBehaviour
 
     private void CircularMovement()
     {
-        timeCounter += Time.deltaTime * speed * rotationDirection;
+        _timeCounter += Time.deltaTime * _speed * _rotationDirection;
 
-        float x = Mathf.Cos(timeCounter) * radius;
-        float y = Mathf.Sin(timeCounter) * radius;
+        float x = Mathf.Cos(_timeCounter) * _radius;
+        float y = Mathf.Sin(_timeCounter) * _radius;
 
         Vector3 newPosition = new(x, y, 0f);
 
-        transform.position = newPosition + initialPosition;
+        transform.position = newPosition + _initialPosition;
     }
 
     private void InvertRotationDirection()
     {
-        rotationDirection = -rotationDirection;
+        _rotationDirection = -_rotationDirection;
     }
 }
