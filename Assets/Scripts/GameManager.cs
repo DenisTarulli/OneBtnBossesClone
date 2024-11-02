@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject _loseText;
     [SerializeField] private GameObject _gameOverUI;
     [SerializeField] private GameObject _finalStatsUI;
+    [SerializeField] private GameObject _newRecordText;
     [SerializeField] private TextMeshProUGUI _timerText;
     [SerializeField] private TextMeshProUGUI _bestTimeText;
     [SerializeField] private TextMeshProUGUI _finalTimeText;
@@ -78,6 +79,7 @@ public class GameManager : MonoBehaviour
         {
             bestTime = _time;
             PlayerPrefs.SetFloat("bestTime", bestTime);
+            _newRecordText.SetActive(true);
         }
 
         int bestMinutes = Mathf.FloorToInt(bestTime / 60);
