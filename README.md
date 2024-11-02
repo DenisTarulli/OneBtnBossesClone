@@ -9,3 +9,7 @@ Temas pendientes de posible revisión/refactor:
 -Scripts de proyectil de player y enemigo, abstracción.
 
 -Sistema de barra de vida ?
+
+-Script aparte para mainmenu
+
+-Chequear eventos para gameover
