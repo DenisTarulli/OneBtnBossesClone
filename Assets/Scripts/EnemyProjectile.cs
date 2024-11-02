@@ -6,6 +6,7 @@ public class EnemyProjectile : MonoBehaviour
 {
     [SerializeField] private float _shotSpeed;
     [SerializeField] private float _lifeTime;
+    private const string IS_PLAYER = "Player";
 
     private void Start()
     {
@@ -24,6 +25,11 @@ public class EnemyProjectile : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.CompareTag(IS_PLAYER))
+        {
+            collision.gameObject.GetComponent<PlayerHealth>().TakeDamage(1);
+        }
+
         Destroy(gameObject);
     }
 }
