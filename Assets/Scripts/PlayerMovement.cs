@@ -9,6 +9,11 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 _initialPosition;
     private int _rotationDirection;
     private float _timeCounter;
+    private float _activeSpeedMultiplier = 1f;
+    private bool _speedPowerUpActive;
+
+    public float ActiveSpeedMultiplier { get => _activeSpeedMultiplier; set => _activeSpeedMultiplier = value; }
+    public bool SpeedPowerUpActive { get => _speedPowerUpActive; set => _speedPowerUpActive = value; }
 
     private void Start()
     {
@@ -20,13 +25,13 @@ public class PlayerMovement : MonoBehaviour
     {
         CircularMovement();
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && !_speedPowerUpActive)
             InvertRotationDirection();
     }
 
     private void CircularMovement()
     {
-        _timeCounter += Time.deltaTime * _speed * _rotationDirection;
+        _timeCounter += Time.deltaTime * _speed * _rotationDirection * ActiveSpeedMultiplier;
 
         float x = Mathf.Cos(_timeCounter) * _radius;
         float y = Mathf.Sin(_timeCounter) * _radius;

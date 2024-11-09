@@ -19,7 +19,7 @@ public class EnemyHealth : MonoBehaviour
     {
         _currentHealth -= damageToTake;
 
-        Debug.Log($"Enemy HP: {_currentHealth}");
+        //Debug.Log($"Enemy HP: {_currentHealth}");
 
         if (_currentHealth <= 0f)
         {
