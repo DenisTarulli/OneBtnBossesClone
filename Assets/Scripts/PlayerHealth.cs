@@ -19,6 +19,11 @@ public class PlayerHealth : MonoBehaviour
         _currentHealth = _maxHealth;
     }
 
+    private void Start()
+    {
+        _canTakeDamage = true;
+    }
+
     public void SetInvulnerabilityBubble(bool newState)
     {
         invulerabilityBubble.SetActive(newState);

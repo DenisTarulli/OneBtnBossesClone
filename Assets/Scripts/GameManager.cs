@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject _gameOverUI;
     [SerializeField] private GameObject _finalStatsUI;
     [SerializeField] private GameObject _newRecordText;
+    [SerializeField] private GameObject _gameUI;
     [SerializeField] private TextMeshProUGUI _timerText;
     [SerializeField] private TextMeshProUGUI _bestTimeText;
     [SerializeField] private TextMeshProUGUI _finalTimeText;
@@ -54,6 +55,7 @@ public class GameManager : MonoBehaviour
             _loseText.SetActive(true);
 
         _gameOverUI.SetActive(true);
+        _gameUI.SetActive(false);
     }
 
     private void TimeUpdate()

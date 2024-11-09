@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
 
     public float ActiveSpeedMultiplier { get => _activeSpeedMultiplier; set => _activeSpeedMultiplier = value; }
     public bool SpeedPowerUpActive { get => _speedPowerUpActive; set => _speedPowerUpActive = value; }
+    public float Radius { get => _radius; }
 
     private void Start()
     {
