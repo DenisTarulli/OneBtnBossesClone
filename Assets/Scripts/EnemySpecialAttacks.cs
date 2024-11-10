@@ -11,6 +11,7 @@ public class EnemySpecialAttacks : MonoBehaviour
     [SerializeField] private GameObject _obstacleWarningEffect;
     [SerializeField] private GameObject _conePrefab;
     [SerializeField] private GameObject _coneWarningEffect;
+    [SerializeField] private GameObject _projectilePrefab;
     [SerializeField] private int _specialAttacksAmount;
     private float _playerMovementRadius;
 
@@ -32,6 +33,9 @@ public class EnemySpecialAttacks : MonoBehaviour
                 break;
             case 2:
                 StartCoroutine(ConeAttack());
+                break;
+            case 3:
+                ProjectileAttack();
                 break;
         }
     }
@@ -60,6 +64,11 @@ public class EnemySpecialAttacks : MonoBehaviour
 
         Destroy(warningEffect);
         Instantiate(_conePrefab, transform.position, Quaternion.Euler(0f, 0f, newAngle));
+    }
+
+    private void ProjectileAttack()
+    {
+        Instantiate(_projectilePrefab, transform.position, Quaternion.Euler(0f, 0f, Random.Range(0f, 359f)));
     }
 
     private Vector3 SetObstacleLocation(float angle)

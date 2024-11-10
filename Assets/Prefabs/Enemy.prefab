@@ -198,4 +198,5 @@ MonoBehaviour:
   _obstacleWarningEffect: {fileID: 7924327854997936489, guid: 49082112e219f064a99e47c485d92b8a, type: 3}
   _conePrefab: {fileID: 8850372795551819575, guid: 5c86b91cd588e894a8107505677e6d93, type: 3}
   _coneWarningEffect: {fileID: 4866705202065504328, guid: 44a3aa85a461e8643ba06cad69f4ffd7, type: 3}
-  _specialAttacksAmount: 2
+  _projectilePrefab: {fileID: 8683376237199731249, guid: 6da72a097c692da4796dbadcd54698c1, type: 3}
+  _specialAttacksAmount: 3

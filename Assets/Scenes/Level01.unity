@@ -2904,10 +2904,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1421753981866665015, guid: dd46e7bfcdd590b4aab639ec832b8903, type: 3}
-      propertyPath: _attackSpeed
-      value: 1.4
-      objectReference: {fileID: 0}
     - target: {fileID: 2607027959243946305, guid: dd46e7bfcdd590b4aab639ec832b8903, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2947,30 +2943,6 @@ PrefabInstance:
     - target: {fileID: 2607027959243946305, guid: dd46e7bfcdd590b4aab639ec832b8903, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2706591384764844661, guid: dd46e7bfcdd590b4aab639ec832b8903, type: 3}
-      propertyPath: _conePrefab
-      value: 
-      objectReference: {fileID: 8850372795551819575, guid: 5c86b91cd588e894a8107505677e6d93, type: 3}
-    - target: {fileID: 2706591384764844661, guid: dd46e7bfcdd590b4aab639ec832b8903, type: 3}
-      propertyPath: _coneWarningEffect
-      value: 
-      objectReference: {fileID: 4866705202065504328, guid: 44a3aa85a461e8643ba06cad69f4ffd7, type: 3}
-    - target: {fileID: 2706591384764844661, guid: dd46e7bfcdd590b4aab639ec832b8903, type: 3}
-      propertyPath: _specialAttackDelay
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2706591384764844661, guid: dd46e7bfcdd590b4aab639ec832b8903, type: 3}
-      propertyPath: _specialAttacksAmount
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2706591384764844661, guid: dd46e7bfcdd590b4aab639ec832b8903, type: 3}
-      propertyPath: _specialAttackCooldown
-      value: 2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2706591384764844661, guid: dd46e7bfcdd590b4aab639ec832b8903, type: 3}
-      propertyPath: _specialAttacksStartDelay
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7282762983768162973, guid: dd46e7bfcdd590b4aab639ec832b8903, type: 3}
       propertyPath: m_Name
