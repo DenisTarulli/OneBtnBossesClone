@@ -1,15 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 public class EnemySpecialAttacks : MonoBehaviour
 {
     [SerializeField] private float _specialAttackCooldown;
     [SerializeField] private float _specialAttacksStartDelay;
-    [SerializeField] private float _obstacleAttackDelay;
+    [SerializeField] private float _specialAttackDelay;
     [SerializeField] private GameObject _obstaclePrefab;
     [SerializeField] private GameObject _obstacleWarningEffect;
+    [SerializeField] private GameObject _conePrefab;
+    [SerializeField] private GameObject _coneWarningEffect;
+    [SerializeField] private int _specialAttacksAmount;
     private float _playerMovementRadius;
 
     private void Start()
@@ -21,7 +23,17 @@ public class EnemySpecialAttacks : MonoBehaviour
 
     private void TriggerSpecialAttack()
     {
-        StartCoroutine(ObstacleAttack());
+        int newAttack = Random.Range(1, _specialAttacksAmount + 1);
+
+        switch (newAttack)
+        {
+            case 1:
+                StartCoroutine(ObstacleAttack());
+                break;
+            case 2:
+                StartCoroutine(ConeAttack());
+                break;
+        }
     }
 
     private IEnumerator ObstacleAttack()
@@ -32,10 +44,22 @@ public class EnemySpecialAttacks : MonoBehaviour
 
         GameObject warningEffect = Instantiate(_obstacleWarningEffect, obstaclePosition, Quaternion.Euler(0f, 0f, obstacleRotation));
 
-        yield return new WaitForSeconds(_obstacleAttackDelay);
+        yield return new WaitForSeconds(_specialAttackDelay);
 
         Destroy(warningEffect);
         Instantiate(_obstaclePrefab, obstaclePosition, Quaternion.Euler(0f, 0f, obstacleRotation));
+    }
+
+    private IEnumerator ConeAttack()
+    {
+        float newAngle = Random.Range(0f, 359f);
+
+        GameObject warningEffect = Instantiate(_coneWarningEffect, transform.position, Quaternion.Euler(0f, 0f, newAngle));
+
+        yield return new WaitForSeconds(_specialAttackDelay);
+
+        Destroy(warningEffect);
+        Instantiate(_conePrefab, transform.position, Quaternion.Euler(0f, 0f, newAngle));
     }
 
     private Vector3 SetObstacleLocation(float angle)

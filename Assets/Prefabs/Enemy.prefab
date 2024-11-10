@@ -177,7 +177,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _projectilePrefab: {fileID: 2662704589353434208, guid: a510118e1c643214fbcd1ec3f5465b20, type: 3}
-  _attackSpeed: 2
+  _attackSpeed: 1.4
   _attackStartDelay: 0.5
 --- !u!114 &2706591384764844661
 MonoBehaviour:
@@ -191,6 +191,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5ae2c5cbb3733c46ad98d4a896a94ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _obstacleAttackDelay: 2.5
+  _specialAttackCooldown: 2.5
+  _specialAttacksStartDelay: 2
+  _specialAttackDelay: 3
   _obstaclePrefab: {fileID: 4024177699995030992, guid: 2a152aa0e112e354f90daddcde6b489f, type: 3}
   _obstacleWarningEffect: {fileID: 7924327854997936489, guid: 49082112e219f064a99e47c485d92b8a, type: 3}
+  _conePrefab: {fileID: 8850372795551819575, guid: 5c86b91cd588e894a8107505677e6d93, type: 3}
+  _coneWarningEffect: {fileID: 4866705202065504328, guid: 44a3aa85a461e8643ba06cad69f4ffd7, type: 3}
+  _specialAttacksAmount: 2
