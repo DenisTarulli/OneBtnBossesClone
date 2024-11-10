@@ -13,3 +13,7 @@ Temas pendientes de posible revisión/refactor:
 -Script aparte para mainmenu
 
 -Chequear eventos para gameover
+
+-Unificar funciones de SpecialAttacks del enemigo de forma que tome parametros para evitar codigo duplicado
+
+-Cambiar el activado de ataques especiales para permitir mas escalabilidad y agregado de los mismos
