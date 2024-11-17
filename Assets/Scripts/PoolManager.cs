@@ -39,7 +39,7 @@ public class PoolManager : Singleton<PoolManager>
     {
         for (int i = 0; i < info.amount; i++)
         {
-            GameObject objInstance = Instantiate(info.prefab, info.container.transform);
+            GameObject objInstance = SpawnObject(info.type, info.container.transform);
             objInstance.SetActive(false);
             objInstance.transform.position = defaultObjectPosition;
             info.pool.Add(objInstance);
@@ -87,5 +87,12 @@ public class PoolManager : Singleton<PoolManager>
         }
 
         return null;
+    }
+
+    public GameObject SpawnObject(PoolObjectType objectType, Transform newParent)
+    {
+        Object objectToInstantiate = ObjectFactory.Instance.CreateObject(objectType, newParent);
+
+        return objectToInstantiate.gameObject;
     }
 }

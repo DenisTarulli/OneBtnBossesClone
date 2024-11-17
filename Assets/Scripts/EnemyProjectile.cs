@@ -1,14 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyProjectile : MonoBehaviour
+public class EnemyProjectile : Object
 {
     [SerializeField] private float _shotSpeed;
     [SerializeField] private float _lifeTime;
     private float _currentLifeTime;
     [SerializeField] private PoolObjectType _type;
     private const string IS_PLAYER = "Player";
+
+    public override PoolObjectType ObjectType => _type;
 
     private void OnEnable()
     {

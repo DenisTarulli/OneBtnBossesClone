@@ -1,10 +1,12 @@
 using UnityEngine;
 
-public class EnemyObstacle : MonoBehaviour
+public class EnemyObstacle : Object
 {
     [SerializeField] private float _lifeTime;
     [SerializeField] private PoolObjectType _type;
     private float _currentLifeTime;
+
+    public override PoolObjectType ObjectType => _type;
 
     private void OnEnable()
     {

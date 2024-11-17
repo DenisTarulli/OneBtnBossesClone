@@ -1,11 +1,12 @@
 using UnityEngine;
 
-public class Projectile : MonoBehaviour
+public class Projectile : Object
 {
     [SerializeField] private float _shotSpeed;
     [SerializeField] private float _projectileDamage;
     [SerializeField] private float _lifeTime;
     [SerializeField] private PoolObjectType _type;
+    public override PoolObjectType ObjectType => _type;
 
     private void OnEnable()
     {
