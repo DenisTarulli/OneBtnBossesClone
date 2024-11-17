@@ -6,7 +6,7 @@ public class ProjectileThrow : MonoBehaviour
 {
     [SerializeField] private float _attackSpeed;
     [SerializeField] private float _attackStartDelay;
-    [SerializeField] private GameObject _projectilePrefab;
+    [SerializeField] private PoolObjectType _projectileType;
     [SerializeField] private Transform _target;
     private float _nextTimeToShoot;
 
@@ -26,7 +26,8 @@ public class ProjectileThrow : MonoBehaviour
 
         _nextTimeToShoot = Time.time + 1 / _attackSpeed;
 
-        GameObject projectile = Instantiate(_projectilePrefab, transform.position, Quaternion.identity);
-        projectile.GetComponent<Projectile>().Target = _target;
+        GameObject projectile = PoolManager.Instance.GetPooledObject(_projectileType);
+        projectile.transform.position = transform.position;
+        projectile.SetActive(true);
     }
 }

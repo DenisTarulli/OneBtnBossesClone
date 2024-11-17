@@ -34,7 +34,6 @@ public class PlayerHealth : MonoBehaviour
         if (!_canTakeDamage) return;
 
         _currentHealth -= damageToTake;
-        Debug.Log($"Player HP: {_currentHealth}");
 
         if (_currentHealth <= 0)
         {

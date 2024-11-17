@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyCombat : MonoBehaviour
 {
-    [SerializeField] private GameObject _projectilePrefab;
+    [SerializeField] private PoolObjectType _projectileType;
     [SerializeField] private float _attackSpeed;
     [SerializeField] private float _attackStartDelay;
     private float _nextTimeToShoot;
@@ -25,6 +25,8 @@ public class EnemyCombat : MonoBehaviour
 
         _nextTimeToShoot = Time.time + 1f / _attackSpeed;
 
-        Instantiate(_projectilePrefab, transform.position, Quaternion.Euler(0f, 0f, Random.Range(0f, 360f)));
+        GameObject bullet = PoolManager.Instance.GetPooledObject(_projectileType);
+        bullet.transform.SetPositionAndRotation(transform.position, Quaternion.Euler(0f, 0f, Random.Range(0f, 360f)));
+        bullet.SetActive(true);
     }
 }

@@ -7,11 +7,11 @@ public class EnemySpecialAttacks : MonoBehaviour
     [SerializeField] private float _specialAttackCooldown;
     [SerializeField] private float _specialAttacksStartDelay;
     [SerializeField] private float _specialAttackDelay;
-    [SerializeField] private GameObject _obstaclePrefab;
+    [SerializeField] private PoolObjectType _obstacleType;
     [SerializeField] private GameObject _obstacleWarningEffect;
-    [SerializeField] private GameObject _conePrefab;
+    [SerializeField] private PoolObjectType _coneType;
     [SerializeField] private GameObject _coneWarningEffect;
-    [SerializeField] private GameObject _projectilePrefab;
+    [SerializeField] private PoolObjectType _specialProjectileType;
     [SerializeField] private int _specialAttacksAmount;
     private float _playerMovementRadius;
 
@@ -51,7 +51,10 @@ public class EnemySpecialAttacks : MonoBehaviour
         yield return new WaitForSeconds(_specialAttackDelay);
 
         Destroy(warningEffect);
-        Instantiate(_obstaclePrefab, obstaclePosition, Quaternion.Euler(0f, 0f, obstacleRotation));
+
+        GameObject obstacle = PoolManager.Instance.GetPooledObject(_obstacleType);
+        obstacle.transform.SetPositionAndRotation(obstaclePosition, Quaternion.Euler(0f, 0f, obstacleRotation));
+        obstacle.SetActive(true);
     }
 
     private IEnumerator ConeAttack()
@@ -63,12 +66,17 @@ public class EnemySpecialAttacks : MonoBehaviour
         yield return new WaitForSeconds(_specialAttackDelay);
 
         Destroy(warningEffect);
-        Instantiate(_conePrefab, transform.position, Quaternion.Euler(0f, 0f, newAngle));
+
+        GameObject cone = PoolManager.Instance.GetPooledObject(_coneType);
+        cone.transform.SetPositionAndRotation(transform.position, Quaternion.Euler(0f, 0f, newAngle));
+        cone.SetActive(true);
     }
 
     private void ProjectileAttack()
     {
-        Instantiate(_projectilePrefab, transform.position, Quaternion.Euler(0f, 0f, Random.Range(0f, 359f)));
+        GameObject projectile = PoolManager.Instance.GetPooledObject(_specialProjectileType);
+        projectile.transform.SetPositionAndRotation(transform.position, Quaternion.Euler(0f, 0f, Random.Range(0f, 359f)));
+        projectile.SetActive(true);
     }
 
     private Vector3 SetObstacleLocation(float angle)

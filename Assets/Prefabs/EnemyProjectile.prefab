@@ -93,6 +93,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _shotSpeed: 2.7
   _lifeTime: 4
+  _type: 1
 --- !u!1 &8999096144609471948
 GameObject:
   m_ObjectHideFlags: 0
