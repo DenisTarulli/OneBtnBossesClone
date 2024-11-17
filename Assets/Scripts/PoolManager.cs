@@ -22,20 +22,10 @@ public class PoolInfo
     [HideInInspector] public List<GameObject> pool = new();
 }
 
-public class PoolManager : MonoBehaviour
+public class PoolManager : Singleton<PoolManager>
 {
     [SerializeField] private List<PoolInfo> listOfPools;
     [SerializeField] private Vector3 defaultObjectPosition;
-
-    public static PoolManager Instance { get; private set; }
-
-    private void Awake()
-    {
-        if (Instance == null)
-            Instance = this;
-        else
-            Destroy(gameObject);
-    }
 
     private void Start()
     {
@@ -97,11 +87,5 @@ public class PoolManager : MonoBehaviour
         }
 
         return null;
-    }
-
-    private void OnDestroy()
-    {
-        if (Instance == this)
-            Instance = null;
     }
 }
