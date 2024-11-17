@@ -1,0 +1,45 @@
+{
+    "name": "PlayerInputsAsset",
+    "maps": [
+        {
+            "name": "Player",
+            "id": "69bdb96b-f003-4728-9336-538b430723af",
+            "actions": [
+                {
+                    "name": "Movement",
+                    "type": "Button",
+                    "id": "67b9803e-69bd-46d2-8984-d5da12ef118c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "7e4bdd90-c469-4713-8dea-cef9b9bb0184",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d2fc15bc-cfce-4adb-856c-63f307043d7d",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

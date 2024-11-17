@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class SpeedPowerUp : MonoBehaviour
@@ -14,6 +15,8 @@ public class SpeedPowerUp : MonoBehaviour
     private PlayerMovement _playerMovement;
     private bool _powerUpActive;
 
+    private PlayerInputsAsset _playerInputsAsset;
+
     private void Start()
     {
         _playerHealth = FindObjectOfType<PlayerHealth>();
@@ -21,14 +24,25 @@ public class SpeedPowerUp : MonoBehaviour
 
         SetMaxSliderValue();
     }
+    private void Awake()
+    {
+        _playerInputsAsset = new PlayerInputsAsset();
+    }
+
+    private void OnEnable()
+    {
+        _playerInputsAsset.Player.Movement.performed += ActivatePowerUp;
+        _playerInputsAsset.Player.Enable();
+    }
+
+    private void OnDisable()
+    {
+        _playerInputsAsset.Player.Movement.performed -= ActivatePowerUp;
+        _playerInputsAsset.Player.Disable();
+    }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && _currentCharge >= _maxCharge)
-        {
-            StartCoroutine(ActivatePowerUp());
-        }
-
         UpdateSliderValue();
 
         if (_powerUpActive)
@@ -38,7 +52,14 @@ public class SpeedPowerUp : MonoBehaviour
             Recharge();
     }
 
-    private IEnumerator ActivatePowerUp()
+    private void ActivatePowerUp(InputAction.CallbackContext obj)
+    {
+        if (!(_currentCharge >= _maxCharge)) return;
+
+        StartCoroutine(PowerUp());
+    }
+
+    private IEnumerator PowerUp()
     {
         _powerUpActive = true;
         _playerHealth.CanTakeDamage = false;

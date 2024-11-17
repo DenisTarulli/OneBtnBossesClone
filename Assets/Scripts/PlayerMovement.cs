@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -10,9 +11,28 @@ public class PlayerMovement : MonoBehaviour
     private float _activeSpeedMultiplier = 1f;
     private bool _speedPowerUpActive;
 
+    private PlayerInputsAsset _playerInputsAsset;
+
     public float ActiveSpeedMultiplier { get => _activeSpeedMultiplier; set => _activeSpeedMultiplier = value; }
     public bool SpeedPowerUpActive { get => _speedPowerUpActive; set => _speedPowerUpActive = value; }
     public float Radius { get => _radius; }
+
+    private void Awake()
+    {
+        _playerInputsAsset = new PlayerInputsAsset();
+    }
+
+    private void OnEnable()
+    {
+        _playerInputsAsset.Player.Movement.performed += InvertRotationDirection;
+        _playerInputsAsset.Player.Enable();
+    }
+
+    private void OnDisable()
+    {
+        _playerInputsAsset.Player.Movement.performed -= InvertRotationDirection;        
+        _playerInputsAsset.Player.Disable();
+    }
 
     private void Start()
     {
@@ -23,9 +43,6 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         CircularMovement();
-
-        if (Input.GetKeyDown(KeyCode.Space) && !_speedPowerUpActive)
-            InvertRotationDirection();
     }
 
     private void CircularMovement()
@@ -40,8 +57,10 @@ public class PlayerMovement : MonoBehaviour
         transform.position = newPosition + _initialPosition;
     }
 
-    private void InvertRotationDirection()
+    private void InvertRotationDirection(InputAction.CallbackContext obj)
     {
+        if (_speedPowerUpActive) return;
+
         _rotationDirection = -_rotationDirection;
     }
 }
