@@ -3,10 +3,12 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
+    #region
     [SerializeField] private float _maxHealth;
     private float _currentHealth;
 
     public static event Action OnEnemyKill;
+    #endregion
 
     private void Start()
     {

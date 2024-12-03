@@ -2,11 +2,14 @@ using UnityEngine;
 
 public class Projectile : Object
 {
+    #region Members
+    [Header("Values")]
+    [SerializeField] private PoolObjectType _type;
     [SerializeField] private float _shotSpeed;
     [SerializeField] private float _projectileDamage;
     [SerializeField] private float _lifeTime;
-    [SerializeField] private PoolObjectType _type;
     public override PoolObjectType ObjectType => _type;
+    #endregion
 
     private void OnEnable()
     {

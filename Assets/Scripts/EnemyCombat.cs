@@ -1,11 +1,15 @@
 using UnityEngine;
 
-public class EnemyCombat : MonoBehaviour
+public class EnemyCombat : MonoBehaviour, IShoot
 {
+    #region Members
     [SerializeField] private PoolObjectType _projectileType;
+
+    [Header("Combat stats")]
     [SerializeField] private float _attackSpeed;
     [SerializeField] private float _attackStartDelay;
     private float _nextTimeToShoot;
+    #endregion
 
     private void Start()
     {
@@ -17,7 +21,7 @@ public class EnemyCombat : MonoBehaviour
         Shoot();
     }
 
-    private void Shoot()
+    public void Shoot()
     {
         if (_nextTimeToShoot > Time.time) return;
 

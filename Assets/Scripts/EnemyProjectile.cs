@@ -2,13 +2,18 @@ using UnityEngine;
 
 public class EnemyProjectile : Object
 {
+    #region
+    [Header("Stats")]
     [SerializeField] private float _shotSpeed;
     [SerializeField] private float _lifeTime;
     private float _currentLifeTime;
-    [SerializeField] private PoolObjectType _type;
-    private const string IS_PLAYER = "Player";
 
+    [Header("Type")]
+    [SerializeField] private PoolObjectType _type;
+
+    private const string IS_PLAYER = "Player";
     public override PoolObjectType ObjectType => _type;
+    #endregion
 
     private void OnEnable()
     {

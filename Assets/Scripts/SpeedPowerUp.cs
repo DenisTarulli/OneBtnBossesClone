@@ -5,17 +5,22 @@ using UnityEngine.UI;
 
 public class SpeedPowerUp : MonoBehaviour
 {
-    [SerializeField] private Slider _chargeSlider;
-    [SerializeField] private float _maxCharge;
+    #region Members
+    [Header("Values")]
     [SerializeField, Range(3f, 10f)] private float _powerUpDuration;
     [SerializeField, Range(8f, 20f)] private float _powerUpCooldown;
     [SerializeField, Range(1.2f, 2.5f)] private float _speedMultiplier;
+    [SerializeField] private float _maxCharge;
     private float _currentCharge;
-    private PlayerHealth _playerHealth;
-    private PlayerMovement _playerMovement;
     private bool _powerUpActive;
 
+    [Header("References")]
+    [SerializeField] private Slider _chargeSlider;
+    private PlayerHealth _playerHealth;
+    private PlayerMovement _playerMovement;
+
     private PlayerInputsAsset _playerInputsAsset;
+    #endregion
 
     private void Start()
     {

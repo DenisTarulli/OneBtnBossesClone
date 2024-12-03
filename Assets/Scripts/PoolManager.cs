@@ -23,7 +23,7 @@ public class PoolInfo
 }
 
 public class PoolManager : Singleton<PoolManager>
-{
+{    
     [SerializeField] private List<PoolInfo> listOfPools;
     [SerializeField] private Vector3 defaultObjectPosition;
 

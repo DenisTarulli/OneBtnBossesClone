@@ -3,14 +3,20 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
+    #region Members
+    [Header("Stats")]
     [SerializeField] private int _maxHealth = 3;
-    [SerializeField] private GameObject invulerabilityBubble;
     private int _currentHealth;
+
+    [Header("Prefab")]
+    [SerializeField] private GameObject invulerabilityBubble;
+
     private bool _canTakeDamage;
 
     public static event Action OnPlayerDeath;
     public int CurrentHealth { get => _currentHealth; }
     public bool CanTakeDamage { get => _canTakeDamage; set => _canTakeDamage = value; }
+    #endregion
 
     private void Awake()
     {

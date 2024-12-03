@@ -1,18 +1,27 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemySpecialAttacks : MonoBehaviour
 {
+    #region Members
+    [Header("Values")]
     [SerializeField] private float _specialAttackCooldown;
     [SerializeField] private float _specialAttacksStartDelay;
     [SerializeField] private float _specialAttackDelay;
-    [SerializeField] private PoolObjectType _obstacleType;
-    [SerializeField] private GameObject _obstacleWarningEffect;
-    [SerializeField] private PoolObjectType _coneType;
-    [SerializeField] private GameObject _coneWarningEffect;
-    [SerializeField] private PoolObjectType _specialProjectileType;
     [SerializeField] private int _specialAttacksAmount;
+
+    [Header("Types")]
+    [SerializeField] private PoolObjectType _obstacleType;
+    [SerializeField] private PoolObjectType _coneType;
+    [SerializeField] private PoolObjectType _specialProjectileType;
+
+    [Header("Prefabs")]
+    [SerializeField] private GameObject _obstacleWarningEffect;
+    [SerializeField] private GameObject _coneWarningEffect;
+    
     private float _playerMovementRadius;
+    #endregion
 
     private void Start()
     {
@@ -42,33 +51,36 @@ public class EnemySpecialAttacks : MonoBehaviour
     private IEnumerator ObstacleAttack()
     {
         float newAngle = Random.Range(0f, 359f);
-        Vector3 obstaclePosition = SetObstacleLocation(newAngle);
-        float obstacleRotation = SetObstacleRotation(obstaclePosition);
 
-        GameObject warningEffect = Instantiate(_obstacleWarningEffect, obstaclePosition, Quaternion.Euler(0f, 0f, obstacleRotation));
+        AttackWarning(_obstacleWarningEffect, newAngle);
 
         yield return new WaitForSeconds(_specialAttackDelay);
 
-        Destroy(warningEffect);
-
-        GameObject obstacle = PoolManager.Instance.GetPooledObject(_obstacleType);
-        obstacle.transform.SetPositionAndRotation(obstaclePosition, Quaternion.Euler(0f, 0f, obstacleRotation));
-        obstacle.SetActive(true);
+        AttackObject(_obstacleType, newAngle);
     }
 
     private IEnumerator ConeAttack()
     {
         float newAngle = Random.Range(0f, 359f);
 
-        GameObject warningEffect = Instantiate(_coneWarningEffect, transform.position, Quaternion.Euler(0f, 0f, newAngle));
+        AttackWarning(_coneWarningEffect, newAngle);
 
         yield return new WaitForSeconds(_specialAttackDelay);
 
-        Destroy(warningEffect);
+        AttackObject(_coneType, newAngle);
+    }
 
-        GameObject cone = PoolManager.Instance.GetPooledObject(_coneType);
-        cone.transform.SetPositionAndRotation(transform.position, Quaternion.Euler(0f, 0f, newAngle));
-        cone.SetActive(true);
+    private void AttackWarning(GameObject warning, float angle)
+    {
+        GameObject warningEffect = Instantiate(warning, transform.position, Quaternion.Euler(0f, 0f, angle));
+        Destroy(warningEffect, _specialAttackDelay);
+    }
+
+    private void AttackObject(PoolObjectType type, float angle)
+    {
+        GameObject newObj = PoolManager.Instance.GetPooledObject(type);
+        newObj.transform.SetPositionAndRotation(transform.position, Quaternion.Euler(0f, 0f, angle));
+        newObj.SetActive(true);
     }
 
     private void ProjectileAttack()

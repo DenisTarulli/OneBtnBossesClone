@@ -1,12 +1,17 @@
 using UnityEngine;
 
-public class ProjectileThrow : MonoBehaviour
+public class ProjectileThrow : MonoBehaviour, IShoot
 {
+    #region Members
+    [Header("Stats")]
     [SerializeField] private float _attackSpeed;
     [SerializeField] private float _attackStartDelay;
+    private float _nextTimeToShoot;
+
+    [Header("Values")]
     [SerializeField] private PoolObjectType _projectileType;
     [SerializeField] private Transform _target;
-    private float _nextTimeToShoot;
+    #endregion
 
     private void Start()
     {
@@ -16,9 +21,9 @@ public class ProjectileThrow : MonoBehaviour
     private void Update()
     {
         Shoot();
-    }    
+    }
 
-    private void Shoot()
+    public void Shoot()
     {
         if (_nextTimeToShoot > Time.time) return;
 

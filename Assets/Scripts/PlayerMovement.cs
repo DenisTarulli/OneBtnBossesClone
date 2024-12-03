@@ -3,12 +3,15 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
+    #region Members
+    [Header("Movement stats")]
     [SerializeField] private float _speed;
     [SerializeField] private float _radius;
-    private Vector3 _initialPosition;
     private int _rotationDirection;
-    private float _timeCounter;
+    private Vector3 _initialPosition;
+    
     private float _activeSpeedMultiplier = 1f;
+    private float _timeCounter;
     private bool _speedPowerUpActive;
 
     private PlayerInputsAsset _playerInputsAsset;
@@ -16,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     public float ActiveSpeedMultiplier { get => _activeSpeedMultiplier; set => _activeSpeedMultiplier = value; }
     public bool SpeedPowerUpActive { get => _speedPowerUpActive; set => _speedPowerUpActive = value; }
     public float Radius { get => _radius; }
+    #endregion
 
     private void Awake()
     {

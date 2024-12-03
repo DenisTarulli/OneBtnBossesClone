@@ -4,17 +4,23 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
+    #region Members
+    [Header("UI Containters")]
     [SerializeField] private GameObject _winText;
     [SerializeField] private GameObject _loseText;
     [SerializeField] private GameObject _gameOverUI;
     [SerializeField] private GameObject _finalStatsUI;
     [SerializeField] private GameObject _newRecordText;
     [SerializeField] private GameObject _gameUI;
+
+    [Header("Text")]
     [SerializeField] private TextMeshProUGUI _timerText;
     [SerializeField] private TextMeshProUGUI _bestTimeText;
     [SerializeField] private TextMeshProUGUI _finalTimeText;
+
     private float _time;
     private bool _gameIsOver;
+    #endregion
 
     private void Start()
     {
@@ -25,12 +31,7 @@ public class GameManager : Singleton<GameManager>
     {
         if (_timerText != null)
             TimeUpdate();
-    }
-
-    public void StartGame()
-    {
-        SceneManager.LoadScene("LevelSelector");
-    }    
+    }       
 
     public void RestartLevel()
     {
