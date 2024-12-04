@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : Singleton<GameManager>
 {
     #region Members
-    [Header("UI Containters")]
+    [Header("UI elements")]
     [SerializeField] private GameObject _winText;
     [SerializeField] private GameObject _loseText;
     [SerializeField] private GameObject _gameOverUI;
@@ -17,6 +17,12 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private TextMeshProUGUI _timerText;
     [SerializeField] private TextMeshProUGUI _bestTimeText;
     [SerializeField] private TextMeshProUGUI _finalTimeText;
+
+    [Header("Objects")]
+    [SerializeField] private GameObject _gameplayObjectsContainter;
+    [SerializeField] private GameObject _preFightCanvas;
+    [SerializeField] private GameObject _restartButton;
+    [SerializeField] private GameObject _nextLevelButton;
 
     private float _time;
     private bool _gameIsOver;
@@ -33,9 +39,20 @@ public class GameManager : Singleton<GameManager>
             TimeUpdate();
     }       
 
+    public void StartGame()
+    {
+        _gameplayObjectsContainter.SetActive(true);
+        _preFightCanvas.SetActive(false);
+    }
+
     public void RestartLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void NextLevel()
+    {
+        SceneManager.LoadScene((SceneManager.GetActiveScene().buildIndex) + 1);
     }
 
     private void GameOver()
@@ -47,10 +64,14 @@ public class GameManager : Singleton<GameManager>
         {
             _winText.SetActive(true);
             _finalStatsUI.SetActive(true);
+            _nextLevelButton.SetActive(true);
             UpdateScores();
         }
         else
+        {
             _loseText.SetActive(true);
+            _restartButton.SetActive(true);
+        }
 
         _gameOverUI.SetActive(true);
         _gameUI.SetActive(false);

@@ -14,6 +14,7 @@ public class PlayerHealth : MonoBehaviour
     private bool _canTakeDamage;
 
     public static event Action OnPlayerDeath;
+    public static event Action<int> OnPlayerHurt;
     public int CurrentHealth { get => _currentHealth; }
     public bool CanTakeDamage { get => _canTakeDamage; set => _canTakeDamage = value; }
     #endregion
@@ -38,6 +39,7 @@ public class PlayerHealth : MonoBehaviour
         if (!_canTakeDamage) return;
 
         _currentHealth -= damageToTake;
+        OnPlayerHurt?.Invoke(_currentHealth);
 
         if (_currentHealth <= 0)
         {

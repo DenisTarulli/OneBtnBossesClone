@@ -32,6 +32,10 @@ public class EnemyObstacle : Object
     {
         if (!collision.gameObject.CompareTag("Player")) return;
 
+        bool playerDashing = collision.gameObject.GetComponent<PlayerMovement>().IsDashing;
+
+        if (playerDashing) return;
+
         collision.gameObject.GetComponent<PlayerHealth>().TakeDamage(1);        
         DisableObstacle();
     }

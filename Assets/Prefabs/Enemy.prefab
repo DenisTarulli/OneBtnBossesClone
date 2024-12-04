@@ -77,7 +77,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 1, g: 0.3160377, b: 0.3160377, a: 1}
   m_FlipX: 0
@@ -194,9 +194,9 @@ MonoBehaviour:
   _specialAttackCooldown: 2.5
   _specialAttacksStartDelay: 2
   _specialAttackDelay: 3
-  _obstacleType: 3
-  _obstacleWarningEffect: {fileID: 7924327854997936489, guid: 49082112e219f064a99e47c485d92b8a, type: 3}
-  _coneType: 2
-  _coneWarningEffect: {fileID: 4866705202065504328, guid: 44a3aa85a461e8643ba06cad69f4ffd7, type: 3}
-  _specialProjectileType: 4
   _specialAttacksAmount: 3
+  _obstacleType: 3
+  _coneType: 2
+  _specialProjectileType: 4
+  _obstacleWarningEffect: {fileID: 7924327854997936489, guid: 49082112e219f064a99e47c485d92b8a, type: 3}
+  _coneWarningEffect: {fileID: 4866705202065504328, guid: 44a3aa85a461e8643ba06cad69f4ffd7, type: 3}

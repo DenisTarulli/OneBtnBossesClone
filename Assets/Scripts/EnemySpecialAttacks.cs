@@ -51,35 +51,37 @@ public class EnemySpecialAttacks : MonoBehaviour
     private IEnumerator ObstacleAttack()
     {
         float newAngle = Random.Range(0f, 359f);
+        Vector3 newLocation = SetObstacleLocation(newAngle);
+        float newRotation = SetObstacleRotation(newLocation);
 
-        AttackWarning(_obstacleWarningEffect, newAngle);
+        AttackWarning(_obstacleWarningEffect, newRotation, newLocation);
 
         yield return new WaitForSeconds(_specialAttackDelay);
 
-        AttackObject(_obstacleType, newAngle);
+        AttackObject(_obstacleType, newRotation, newLocation);
     }
 
     private IEnumerator ConeAttack()
     {
         float newAngle = Random.Range(0f, 359f);
 
-        AttackWarning(_coneWarningEffect, newAngle);
+        AttackWarning(_coneWarningEffect, newAngle, transform.position);
 
         yield return new WaitForSeconds(_specialAttackDelay);
 
-        AttackObject(_coneType, newAngle);
+        AttackObject(_coneType, newAngle, transform.position);
     }
 
-    private void AttackWarning(GameObject warning, float angle)
+    private void AttackWarning(GameObject warning, float angle, Vector3 newPosition)
     {
-        GameObject warningEffect = Instantiate(warning, transform.position, Quaternion.Euler(0f, 0f, angle));
+        GameObject warningEffect = Instantiate(warning, newPosition, Quaternion.Euler(0f, 0f, angle));
         Destroy(warningEffect, _specialAttackDelay);
     }
 
-    private void AttackObject(PoolObjectType type, float angle)
+    private void AttackObject(PoolObjectType type, float angle, Vector3 newPosition)
     {
         GameObject newObj = PoolManager.Instance.GetPooledObject(type);
-        newObj.transform.SetPositionAndRotation(transform.position, Quaternion.Euler(0f, 0f, angle));
+        newObj.transform.SetPositionAndRotation(newPosition, Quaternion.Euler(0f, 0f, angle));
         newObj.SetActive(true);
     }
 
