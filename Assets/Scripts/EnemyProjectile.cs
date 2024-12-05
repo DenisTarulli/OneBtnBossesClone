@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class EnemyProjectile : Object
 {
-    #region
+    #region Members
     [Header("Stats")]
     [SerializeField] private float _shotSpeed;
     [SerializeField] private float _lifeTime;

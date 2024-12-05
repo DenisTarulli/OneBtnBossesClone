@@ -52,7 +52,12 @@ public class GameManager : Singleton<GameManager>
 
     public void NextLevel()
     {
-        SceneManager.LoadScene((SceneManager.GetActiveScene().buildIndex) + 1);
+        int nextSceneIndex = (SceneManager.GetActiveScene().buildIndex) + 1;
+
+        if (SceneManager.sceneCountInBuildSettings <= nextSceneIndex)
+            SceneManager.LoadScene("LevelSelector");
+        else
+            SceneManager.LoadScene(nextSceneIndex);
     }
 
     private void GameOver()
