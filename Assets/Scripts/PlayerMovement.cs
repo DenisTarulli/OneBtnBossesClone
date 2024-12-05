@@ -39,6 +39,9 @@ public class PlayerMovement : MonoBehaviour
     public bool IsDashing { get => _isDashing; }
     public MovementType MovementType { get => _movementType; set => _movementType = value; }
     public float Radius { get => _radius; }
+    public float CurrentCharge { get => _currentCharge; }
+    public float MaxCharge { get => _maxCharge; }
+    public GameObject ChargeBar { get => _chargeBar; set => _chargeBar = value; }
     #endregion
 
     private void Awake()
