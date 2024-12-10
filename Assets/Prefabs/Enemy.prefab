@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4314388253032950266}
   - component: {fileID: 1421753981866665015}
   - component: {fileID: 2706591384764844661}
+  - component: {fileID: 1502189076601943798}
   m_Layer: 10
   m_Name: Enemy
   m_TagString: Enemy
@@ -200,3 +201,16 @@ MonoBehaviour:
   _specialProjectileType: 4
   _obstacleWarningEffect: {fileID: 7924327854997936489, guid: 49082112e219f064a99e47c485d92b8a, type: 3}
   _coneWarningEffect: {fileID: 4866705202065504328, guid: 44a3aa85a461e8643ba06cad69f4ffd7, type: 3}
+--- !u!114 &1502189076601943798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7282762983768162973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 828d018c894f0f2479cbf5a07d95dd4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemyHealthBar: {fileID: 0}
